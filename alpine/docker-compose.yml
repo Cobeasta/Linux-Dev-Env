@@ -1,0 +1,10 @@
+services:
+  devcontainer:
+    build: 
+      context: .
+      dockerfile: ./dockerfile.alpine
+    container_name: "${PROJNAME}"
+    ports:
+      - 127.0.0.1:2222:${PROJPORT}
+    volumes:
+      - ~/${BASEPATH}/${PROJNAME}:/usr/includes/
