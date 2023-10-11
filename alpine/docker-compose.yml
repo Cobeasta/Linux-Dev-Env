@@ -1,10 +1,14 @@
 services:
   devcontainer:
-    build: 
+    build:
       context: .
-      dockerfile: ./dockerfile.alpine
+      args:
+        UID: "${UID}"
+      dockerfile: dockerfile.alpine
     container_name: "${PROJNAME}"
     ports:
-      - 127.0.0.1:2222:${PROJPORT}
+      - 127.0.0.1:${PROJPORT}:22
     volumes:
-      - ~/${BASEPATH}/${PROJNAME}:/usr/includes/
+      - alpine-includes:/usr/includes/
+volumes:
+  alpine-includes:
