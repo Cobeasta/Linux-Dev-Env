@@ -1,0 +1,4 @@
+CENTOS_PORTMOUNT=4444
+CENTOS_ENV_NAME="dev-env-centos"
+CENTOS_DOCKERFILE_NAME="dockerfile.centos"
+CENTOS_USERNAME="developer"
