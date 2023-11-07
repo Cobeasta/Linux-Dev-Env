@@ -29,6 +29,6 @@ RUN        echo "[unit]" >> /etc/systemd/system/openssh.service \
         && echo "[service]" >> /etc/systemd/system/openssh.service \
         && echo "ExecStartPre=/entrypoint.sh" >> /etc/systemd/system/openssh.service \
         && echo "ExecStart=/usr/sbin/sshd" >> /etc/systemd/system/openssh.service
-
+ENTRYPOINT ["/entrypoint.sh"]
 EXPOSE 22 7777
 COPY entrypoint.sh /

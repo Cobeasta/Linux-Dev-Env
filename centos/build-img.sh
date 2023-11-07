@@ -18,6 +18,6 @@ docker build -t "${CENTOS_ENV_NAME}" --build-arg=$(id -u) -f "${SCRIPT_DIR}/${CE
 
 echo "starting $ENV_NAME docker container"
 
-docker run -dit --rm -p127.0.0.1:$PORTMOUNT:22 --mount type=bind,source=//$(pwd),destination=//"/home/builder/$CALL_DIR" --name="${CENTOS_ENV_NAME}" $CENTOS_ENV_NAME
+docker run -dit --rm -p127.0.0.1:$CENTOS_PORTMOUNT:22 --mount type=bind,source=//$(pwd),destination=//"/home/${CENTOS_USERNAME}/$CALL_DIR" --name="${CENTOS_ENV_NAME}" $CENTOS_ENV_NAME
 
-ssh developer@clion_docker -p$CENTOS_PORTMOUNT && docker stop "$CENTOS_ENV_NAME"
+ssh ${CENTOS_SSHHOSTENTRYNAME} && docker stop "$CENTOS_ENV_NAME"

@@ -14,20 +14,20 @@ source $SCRIPT_DIR/centos/config
 echo $CENTOS_ENV_NAME
 
 IFS='' read -r -d '' CENTOS_SSHCONFIGENTRY <<EOF
-Host ${CENTOS_ENV_NAME}
-        HostName ${CENTOS_ENV_NAME}
+Host ${CENTOS_SSHHOSTENTRYNAME}
+        HostName localhost
         StrictHostKeyChecking no
         UserKnownHostsFile /dev/null
         GlobalKnownHostsFile /dev/null
         User ${CENTOS_USERNAME}
         Port ${CENTOS_PORTMOUNT}
 EOF
-echo "check for ${CENTOS_ENV_NAME} ssh config host entry"
+echo "check for ${CENTOS_SSHHOSTENTRYNAME} ssh config host entry"
 # Check for dev environment
-grep -xF "Host ${CENTOS_ENV_NAME}" ~/.ssh/config
+grep -xF "Host ${CENTOS_SSHHOSTENTRYNAME}" ~/.ssh/config
 
 if [ $? -ne 0 ]; then
-        echo "Writing SSH config host entry for ${CENTOS_ENV_NAME} environment"
+        echo "Writing SSH config host entry for ${CENTOS_SSHHOSTENTRYNAME} environment"
         echo -e "\n$CENTOS_SSHCONFIGENTRY" >> ~/.ssh/config 
 fi
 
